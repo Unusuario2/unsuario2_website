@@ -19,6 +19,7 @@ const postsCollection = defineCollection({
           alt: z.string(),
         })
         .optional(),
+      thumbnail: image().optional(),
       toc: z.boolean().optional().default(true),
     }),
 })

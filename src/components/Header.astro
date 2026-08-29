@@ -8,13 +8,17 @@ import NavLink from '~/components/NavLink.astro'
 const lightDarkAutoTheme = siteConfig.themes.mode === 'light-dark-auto'
 const selectTheme =
   siteConfig.themes.mode === 'select' && siteConfig.themes.include.length > 1
+
+// El logo apunta a la home. Con trailingSlash: 'never', la home bajo un
+// base path es el base a secas, sin barra final (ej: /unsuario2_website).
+const homeHref = import.meta.env.BASE_URL.replace(/\/$/, '') || '/'
 ---
 
 <header>
   <div class="relative flex items-center justify-between bg-accent/10 rounded-xl">
     <a
       id="logo"
-      href="/"
+      href={homeHref}
       class="block px-4 py-1.5 max-w-full no-underline items-center bg-accent text-background font-bold rounded-xl"
     >
       {siteConfig.title}
