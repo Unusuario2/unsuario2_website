@@ -75,7 +75,6 @@ AudioProcess fits into ContentBuilder the same way every other tool does — one
 
 This conversion unit test was done with the same files that the [FFmpeg](https://www.ffmpeg.org/) team uses to test their modules.
 
-<!-- TODO: embed demo video here (native LinkedIn video, not recoverable from export) -->
 <video src="/unsuario2_website/media/source_engine/tooling/audprccs/audprccs_1.mp4" controls></video>
 
 ---
