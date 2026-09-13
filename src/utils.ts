@@ -20,6 +20,16 @@ export function dateString(date: Date) {
   return date.toISOString().split('T')[0]
 }
 
+// Prepends the site's base path (import.meta.env.BASE_URL) to an internal,
+// root-relative path so links still work when the site is deployed under a
+// subpath, like on GitHub Pages (e.g. /unsuario2_website). Mirrors the logic
+// in NavLink.astro and Header.astro.
+export function withBase(path: string): string {
+  const baseNoSlash = import.meta.env.BASE_URL.replace(/\/$/, '')
+  const relativePath = path.replace(/^\//, '').replace(/\/$/, '')
+  return relativePath ? `${baseNoSlash}/${relativePath}` : baseNoSlash || '/'
+}
+
 export function pick(obj: Record<string, any>, keys: string[]) {
   return Object.fromEntries(
     keys.filter((key) => key in obj).map((key) => [key, obj[key]]),
@@ -289,7 +299,7 @@ export class SeriesGroup extends PostsCollationGroup {
   // Factory method to create a SeriesGroup instance with async data fetching
   static async build(posts?: CollectionEntry<'posts'>[]): Promise<SeriesGroup> {
     const sortedPosts = posts || (await getSortedPosts())
-    const seriesGroup = new SeriesGroup('Series', '/series', [])
+    const seriesGroup = new SeriesGroup('Series', withBase('/series'), [])
     sortedPosts.forEach((post) => {
       const frontmatterSeries = post.data.series
       if (frontmatterSeries) {
@@ -309,7 +319,7 @@ export class TagsGroup extends PostsCollationGroup {
   // Factory method to create a SeriesGroup instance with async data fetching
   static async build(posts?: CollectionEntry<'posts'>[]): Promise<SeriesGroup> {
     const sortedPosts = posts || (await getSortedPosts())
-    const tagsGroup = new TagsGroup('Tags', '/tags', [])
+    const tagsGroup = new TagsGroup('Tags', withBase('/tags'), [])
     sortedPosts.forEach((post) => {
       const frontmatterTags = post.data.tags || []
       frontmatterTags.forEach((tag) => {

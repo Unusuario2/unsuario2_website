@@ -23,7 +23,7 @@ vpkbuilder.exe -game "C:/Games/MyMod/mygame"
 
 VpkBuilder reads a KeyValues script (`scripts/tools/vpkbuilder_settings.txt`) that defines one or more VPKs to build. For each one it collects the right files, stages them in a temp directory, calls `vpk.exe` to pack them, and moves the result to the output directory — cleaning up after itself when it's done.
 
-It's the same philosophy as [MapBuilder](/blog/mapbuilder-standardizing-automating-map-compilation-across-the-pipeline): the process is defined once, in a config file, and every person or automated system that runs `vpkbuilder.exe -game <dir>` gets the exact same result.
+It's the same philosophy as [MapBuilder](/unsuario2_website/posts/source_engine/tooling/mpbld/mapbuilder): the process is defined once, in a config file, and every person or automated system that runs `vpkbuilder.exe -game <dir>` gets the exact same result.
 
 Example of `scripts/tools/vpkbuilder_settings.txt` file:
 ```

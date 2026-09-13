@@ -1,5 +1,6 @@
 ---
 import type { SocialLinks } from '~/types'
+import { withBase } from '~/utils'
 import IconGithub from '~/icons/github.svg'
 import IconMastodon from '~/icons/mastodon.svg'
 import IconTwitter from '~/icons/twitter.svg'
@@ -96,7 +97,7 @@ const { socialLinks } = Astro.props
   }
   {
     socialLinks.rss && (
-      <a href="/rss.xml" class="social-link">
+      <a href={withBase('/rss.xml')} class="social-link">
         <span class="sr-only">RSS</span>
         <IconRss class="size-7" />
       </a>

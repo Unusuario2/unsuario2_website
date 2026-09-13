@@ -25,7 +25,7 @@ It automates the cleanup step so your game directory doesn't bloat over time and
 
 ### Implementation
 
-The tool uses [IFileSystemBatch from filesystem_batch.dll](/blog/file-system-batch-operations-source-engine/) for batch/glob operations. For the actual deletion work, a **KeyValues** file is loaded for the config. Game path setup is the same as the rest of the toolchain (goes through **CmdLib_InitFileSystem**).
+The tool uses [IFileSystemBatch from filesystem_batch.dll](/unsuario2_website/posts/source_engine/tooling/flb/file-system-batch-operations) for batch/glob operations. For the actual deletion work, a **KeyValues** file is loaded for the config. Game path setup is the same as the rest of the toolchain (goes through **CmdLib_InitFileSystem**).
 
 The main loop iterates every key in the settings file and dispatches by type.
 

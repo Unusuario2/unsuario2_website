@@ -7,7 +7,7 @@ thumbnail: "./sndbld_1.png"
 series: "Source Engine Tooling"
 ---
 
-[AudioProcess](/blog/audioprocess-mass-audio-converter-for-the-source-engine) batch-converts a whole directory of audio at once — you point it at a folder and it walks every file. That's the right tool when you're bulk-migrating a library. It's the wrong shape for the resource compiler, which doesn't think in directories — it thinks in individual assets that need to be compiled, one at a time, on demand, using the **assetsystem** system.
+[AudioProcess](/unsuario2_website/posts/source_engine/tooling/audprccs/audioprocess) batch-converts a whole directory of audio at once — you point it at a folder and it walks every file. That's the right tool when you're bulk-migrating a library. It's the wrong shape for the resource compiler, which doesn't think in directories — it thinks in individual assets that need to be compiled, one at a time, on demand, using the **assetsystem** system.
 
 SoundBuilder is that per-asset version: an `IAppSystemDll` module — `soundbuilder.dll` — that the resource compiler loads and calls to turn one audio source file into one game-ready `.wav`.
 
@@ -45,7 +45,7 @@ If the asset system doesn't recognize the file as a sound asset, SoundBuilder re
 
 ### Two ways to resolve the output path
 
-- **`-o <dir>`** — manual mode. Used by [AudioProcess](/blog/audioprocess-mass-audio-converter-for-the-source-engine)
+- **`-o <dir>`** — manual mode. Used by [AudioProcess](/unsuario2_website/posts/source_engine/tooling/audprccs/audioprocess)
 - **`-use_content_game_directory`** — mirror mode. The input file is expected to live under the project's content search path; SoundBuilder strips that prefix and rebuilds the same relative path under the game directory. No `-o` needed — the output location is derived entirely from where the source file lives. Used by the **resourcecompiler system**
 
 Mirror mode is the one that matters for the pipeline: it's what lets the resource compiler call SoundBuilder on any changed source file in `content/` and land the compiled `.wav` in the matching spot under the game directory, without anything having to compute or pass that path in.
@@ -68,7 +68,7 @@ Every other stage in the pipeline that compiles a specific asset type — textur
 
 ### Design references
 
-- [AudioProcess: Mass audio converter for the Source Engine](/blog/audioprocess-mass-audio-converter-for-the-source-engine)
+- [AudioProcess: Mass audio converter for the Source Engine](/unsuario2_website/posts/source_engine/tooling/audprccs/audioprocess)
 - [FFmpeg](https://www.ffmpeg.org/)
 
 ---
